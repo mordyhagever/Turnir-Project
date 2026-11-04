@@ -17,7 +17,7 @@ def get_groups_id():
 
 
 def groups_goals():
-    team1_goals = input("Enter amount of goals for first team")
+    team1_goals = input("Enter amount of goals for first team:\n")
     team1_goals = string_to_int(team1_goals)
     while not is_goals_legal(team1_goals):
         team1_goals = input("Enter non negative goals:\n")

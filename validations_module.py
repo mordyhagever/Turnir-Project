@@ -70,7 +70,8 @@ def is_goals_legal(goals):
 
 
 def check_menu(num):
-    check_id(num)
+    while not check_id(num):
+        return False
     num = string_to_int(num)
     if num > 10 or num < 0:
         return False
