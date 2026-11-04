@@ -46,11 +46,11 @@ def is_name_available(group_name):
 
 
 def get_name():
-    name = str(input("Please enter a group name:\n"))
+    name = str(input("Please enter a group name: "))
     while not is_name_available(name):
-        name = str(input("The name is taken, enter a different name:\n"))
+        name = str(input("The name is taken, enter a different name: "))
     while not check_name(name):
-        name = str(input("Please enter a valid not empty name:\n"))
+        name = str(input("Please enter a valid not empty name: "))
     return name
 
 
@@ -62,6 +62,25 @@ def get_id():
     return id_num
 
 def is_goals_legal(goals):
-    if goals >= 0:
+    try:
+        if int(goals) >= 0:
+            return True
+    except ValueError:
+        return False
+
+
+def check_menu(num):
+    check_id(num)
+    num = string_to_int(num)
+    if num > 10 or num < 0:
+        return False
+    return True
+
+def chack_tables_menu(number):
+    try:
+        number = int(number)
+        if number < 1 or number > 5:
+            return False
         return True
-    return False
+    except ValueError:
+        return False

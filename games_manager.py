@@ -1,5 +1,6 @@
 from validations_module import *
 from data_base import *
+from tables_manager import calc_points, goals_updator
 
 def get_groups_id():
     print("Enter first group details")
@@ -14,23 +15,21 @@ def get_groups_id():
         outsider_group_id = get_id()
     return home_group_id, outsider_group_id
 
+
 def groups_goals():
     team1_goals = input("Enter amount of goals for first team")
-    check_id(team1_goals)
     team1_goals = string_to_int(team1_goals)
     while not is_goals_legal(team1_goals):
         team1_goals = input("Enter non negative goals:\n")
-        check_id(team1_goals)
-        team1_goals = string_to_int(team1_goals)
+        if is_goals_legal(team1_goals):
+            team1_goals = string_to_int(team1_goals)
     team2_goals = input("Enter amount of goals for second team:\n")
-    check_id(team2_goals)
     team2_goals = string_to_int(team2_goals)
     while not is_goals_legal(team2_goals):
         team2_goals = input("Enter non negative goals:\n")
-        check_id(team2_goals)
-        team2_goals = string_to_int(team2_goals)
+        if is_goals_legal(team1_goals):
+            team2_goals = string_to_int(team2_goals)
     return team1_goals, team2_goals
-
 
 def is_allowed_to_play(group1, group2):
     for matches in all_games:
@@ -38,16 +37,25 @@ def is_allowed_to_play(group1, group2):
             return False
     return True
 
+
 def add_game_main():
     teams = get_groups_id()
     while not is_allowed_to_play(teams[0], teams[1]):
         print("teams already played together!")
         teams = get_groups_id()
     goals = groups_goals()
+    if goals[0] > goals[1]:
+        winning_team = teams[0]
+    elif goals[1] > goals[0]:
+        winning_team = teams[1]
+    else:
+        winning_team = (teams[0], teams[1])
+    calc_points(winning_team)
+    goals_updator(teams[0], goals[0], teams[1], goals[1])
 
     all_games.append({"home_group": teams[0], "outsider_group": teams[1], "home_goals": goals[0], "outsider_goals": goals[1]})
     return "Match has been updated"
 
-
+# print(add_game_main())
 
 
