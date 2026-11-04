@@ -46,11 +46,14 @@ def add_game_main():
     goals = groups_goals()
     if goals[0] > goals[1]:
         winning_team = teams[0]
+        losing_team = teams[1]
     elif goals[1] > goals[0]:
         winning_team = teams[1]
+        losing_team = teams[0]
     else:
         winning_team = (teams[0], teams[1])
-    calc_points(winning_team)
+        losing_team = None
+    calc_points(winning_team, losing_team)
     goals_updator(teams[0], goals[0], teams[1], goals[1])
 
     all_games.append({"home_group": teams[0], "outsider_group": teams[1], "home_goals": goals[0], "outsider_goals": goals[1]})

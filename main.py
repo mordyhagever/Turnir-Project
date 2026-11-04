@@ -2,6 +2,7 @@ from teams_manager import *
 from validations_module import *
 from games_manager import *
 from tables_manager import *
+from summary_turnir import *
 
 def active1():
     add_team()
@@ -14,13 +15,13 @@ def active4():
 def active5():
     return leading_team()
 def active6():
-    pass
+    return best_attacking_team()
 def active7():
-    pass
+    return best_success_rate()
 def active8():
-    pass
+    return teams_without_wins()
 def active9():
-    pass
+    return summary()
 def active10():
     pass
 
@@ -59,13 +60,13 @@ def active_system():
         elif choose == 5:
             print(active5())
         elif choose == 6:
-            active6()
+            print(active6())
         elif choose == 7:
-            active7()
+            print(active7())
         elif choose == 8:
-            active8()
+            print(active8())
         elif choose == 9:
-            active9()
+            print(active9())
         elif choose == 10:
             active10()
         elif choose == 0:

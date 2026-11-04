@@ -23,8 +23,8 @@ def add_team():
         "goals_against": 0,
         "points": 0
     }
+    all_teams.append(team)
     print("group was successfully added")
-    return team
 
 def show_all_teams():
     if not all_teams:
@@ -34,31 +34,3 @@ def show_all_teams():
          print(f"Team ID: {team["id"]}, Team name: {team["name"]}, Number of games: {team["played"]}, Team score: {team["points"]}")
 
 
-
-#checking if "show_all_teams" works
-#
-# teamssss =[ {
-#     "id": 1,
-#     "name": "Beit",
-#     "played": 3,
-#     "wins": 1,
-#     "draws": 0,
-#     "losses": 0,
-#     "goals_for": 0,
-#     "goals_against": 0,
-#     "points": 20
-# },
-#  {
-#      "id": 2,
-#      "name": "TLV",
-#      "played": 5,
-#      "wins": 1,
-#      "draws": 0,
-#      "losses": 0,
-#      "goals_for": 0,
-#      "goals_against": 0,
-#      "points": 30
-#  }
-#  ]
-#
-# show_all_teams(teamssss)
